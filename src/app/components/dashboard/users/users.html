@@ -1,0 +1,78 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Usuarios</span>
+        <span class="example-spacer"></span>
+        <button routerLink="/dashboard/createEditUser" matTooltip="Agregar registro" mat-flat-button color="primary">+</button>
+    </mat-toolbar>
+    <div>
+      <mat-form-field appearance="outline">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Kilo" #input>
+      </mat-form-field>
+    </div>
+
+    <div class="mat-elevation-z1">
+      <table mat-table [dataSource]="dataSource" matSort >
+
+        <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="userName">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="firstName">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="lastName">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Apellidos </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="sex">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Sexo </th>
+        <td mat-cell *matCellDef="let element"> {{element.sex}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td style="text-align: right;" mat-cell *matCellDef="let element; let i=index;"> 
+        <a class="pointer search">
+        <mat-icon matTooltip="Buscar usuario">search</mat-icon>
+        </a>
+        <a class="pointer edit" routerLink="/dashboard/editUser/{{i}}">
+        <mat-icon matTooltip="Editar usuario">edit</mat-icon>
+        </a >
+
+        
+        <a class="pointer delete">
+        <mat-icon matTooltip="Borrar usuario"  (click)="deleteUser(i)">delete</mat-icon>
+        </a>
+        </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+
+    </div>
+
+    
+    
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons 
+      aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+
+
+
+ <h2  *ngIf="dataSource.data.length === 0">There are not more users to show</h2>

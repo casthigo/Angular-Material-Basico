@@ -1,0 +1,22 @@
+<div class="body">
+    <div class="login">
+        <mat-spinner *ngIf="loading" diameter="50"></mat-spinner>
+
+        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="login()">
+        <img src="assets/img/Marca-Acme.jpg" alt="img" height="100" >
+            
+            <h2>Login</h2>
+            <mat-form-field>
+                <mat-label>usuario</mat-label>
+                <input formControlName="usuario" type="text" autocomplete="off" matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Clave</mat-label>
+                <input formControlName="clave" type="password" autocomplete="off" matInput>
+            </mat-form-field>
+            <br>
+            <button [disabled]="this.form.invalid" type="submit" mat-flat-button color="primary">Entrar</button>
+        </form>
+    </div>
+</div>

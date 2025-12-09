@@ -1,0 +1,52 @@
+<div class="container">
+    <mat-toolbar color="primary">
+        <span class="example-spacer">{{action}} Usuario</span>
+    </mat-toolbar>
+    <mat-card>
+        <form [formGroup]="form" (ngSubmit)="saveUser()" >
+            <mat-card-content>
+                <mat-grid-list cols="4" rowHeight="100">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
+                        <mat-form-field>
+                            <mat-label>Usiario</mat-label>
+                            <input formControlName="userName" matInput placeholder="Ex. Usuario..." input>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="3" [rowspan]="5" [style.background]="'lightblue'">
+                        <img src="assets/img/usuario.png" alt="img" height="200" width="200">
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>First Name</mat-label>
+                            <input formControlName="firstName" matInput placeholder="Ex. Julio..." matinput>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
+                        <mat-form-field>
+                            <mat-label>Last Name</mat-label>
+                            <input formControlName="lastName" matInput placeholder="Ex. Usuario..." matinput>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
+                        <mat-form-field>
+                            <mat-label>Sex</mat-label>
+                            <mat-select formControlName="sex">
+                                <mat-option value="Female">Femele</mat-option>
+                                <mat-option value="Male">Male</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
+                        <button routerLink="/dashboard/users" matButton="filled"
+                            style="margin-right: 10px;">Regresar</button>
+                        <button [disabled]="form.invalid" type="submit" matButton="filled">Aceptar</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+
+
+        </form>
+
+    </mat-card>
+</div>

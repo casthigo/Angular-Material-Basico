@@ -1,0 +1,12 @@
+<mat-toolbar class="mat-toolbar">
+  <span>Recursos Humanos</span>
+  <span class="example-spacer"></span>
+    <button style="margin-right: 5px;" mat-flat-button color="primary" *ngFor="let menu of menuList" [routerLink]="menu.redirect">{{ menu.name }}</button>
+  <span class="example-spacer"></span>
+
+  <button matTooltip="Salir" routerLink="/login" matIconButton class="example-icon" 
+    aria-label="Example icon-button with share icon">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
